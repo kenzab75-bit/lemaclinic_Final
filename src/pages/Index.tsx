@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { useToast } from "@/hooks/use-toast";
 import ContactForm from "@/components/ContactForm";
 import TestimonialCard from "@/components/TestimonialCard";
+import SectionDivider from "@/components/SectionDivider";
 import { testimonials } from "@/data/testimonials";
 import { timelineSteps, type TimelineStep } from "@/data/timelineSteps";
 import MegaMenuSInformer from "@/components/MegaMenuSInformer";
@@ -748,9 +749,7 @@ const Index = () => {
     </section>
 
     {/* Elegant Section Divider */}
-    <section className="bg-[#FAF9FF] py-0.5">
-      <div className="section-divider"></div>
-    </section>
+    <SectionDivider className="bg-[#FAF9FF]" />
 
     {/* Timeline Section */}
     <section id="victimes" className="relative py-section bg-[#FAF9FF] overflow-hidden">
@@ -826,7 +825,7 @@ const Index = () => {
     </section>
 
     {/* Elegant Section Divider */}
-    <div className="section-divider"></div>
+    <SectionDivider className="bg-[#FAF9FF]" />
 
     {/* Témoignages des Victimes Section */}
     <section id="temoignages" className="relative py-section bg-[#FAF9FF] overflow-hidden">
@@ -914,9 +913,7 @@ const Index = () => {
     </section>
 
     {/* Elegant Section Divider */}
-    <section className="bg-[#FAF9FF] py-0.5">
-      <div className="section-divider-small"></div>
-    </section>
+    <SectionDivider variant="compact" className="bg-[#FAF9FF]" />
 
 
     {/* Section Témoignage Anonyme */}
@@ -1053,7 +1050,7 @@ const Index = () => {
     </section>
 
     {/* Elegant Section Divider */}
-    <div className="section-divider"></div>
+    <SectionDivider className="bg-[#FAF9FF]" />
 
     {/* Section RGPD + Contact alignée */}
     <section id="contact" className="relative py-section bg-[#FAF9FF] overflow-hidden">
