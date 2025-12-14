@@ -761,7 +761,7 @@ const Index = () => {
 
     {/* Timeline Section */}
     <section
-      id="Victimes"
+      id="victimes"
       className="relative py-section bg-[#FAF9FF] overflow-hidden"
     >
 
@@ -867,7 +867,7 @@ const Index = () => {
 
     {/* Témoignages des Victimes Section */}
     <section
-      id="Témoignages"
+      id="temoignages"
       className="relative py-section bg-[#FAF9FF] overflow-hidden"
     >
       {/* Gradient premium */}
@@ -981,7 +981,7 @@ const Index = () => {
 
     {/* Section Témoignage Anonyme */}
     <section
-      id="Témoignage Anonyme"
+      id="contact"
       className="relative py-section bg-[#FAF9FF] overflow-hidden"
     >
       {/* Gradient premium */}
