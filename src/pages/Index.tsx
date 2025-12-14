@@ -1408,6 +1408,7 @@ const Index = () => {
     <TimelineModal
       step={openStep}
       onOpenChange={(open) => {
+        setIsTimelineDialogOpen(open);
         if (!open) {
           setOpenStep(null);
         }
