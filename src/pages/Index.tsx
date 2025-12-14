@@ -1404,37 +1404,37 @@ const Index = () => {
         </div>
       </div>
     </footer>
-    <Dialog
-      open={Boolean(activeTimelineStep)}
-      onOpenChange={(open) => {
-        if (!open) {
-          setActiveTimelineStep(null);
-        }
-      }}
-    >
-      <DialogContent className="relative max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-[#213245] to-[#0f1b29] border border-white/10 text-white shadow-2xl shadow-black/40 backdrop-blur-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-white/10">
-        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,rgba(62,104,136,0.28),transparent_45%)]" />
-        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,rgba(224,43,43,0.18),transparent_55%)]" />
+    {activeTimelineStep && (
+      <Dialog
+        open
+        onOpenChange={(open) => {
+          if (!open) {
+            setActiveTimelineStep(null);
+          }
+        }}
+      >
+        <DialogContent className="relative max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-[#213245] to-[#0f1b29] border border-white/10 text-white shadow-2xl shadow-black/40 backdrop-blur-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-white/10">
+          <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,rgba(62,104,136,0.28),transparent_45%)]" />
+          <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,rgba(224,43,43,0.18),transparent_55%)]" />
 
-        <div className="relative z-10 space-y-8">
-          <DialogHeader className="relative pb-6">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-[0.3em] uppercase border border-white/20">
-              <span className="h-2 w-2 rounded-full bg-primary-red" />
-              <span>{activeTimelineStep?.stepNumber}</span>
-            </div>
-            <DialogTitle className="text-4xl font-black mt-4 text-white">{activeTimelineStep?.modalTitle}</DialogTitle>
-            <button
-              onClick={() => {
-                setActiveTimelineStep(null);
-              }}
-              className="absolute right-0 top-0 p-2 rounded-full hover:bg-white/10 transition-colors"
-              aria-label="Fermer la modale"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </DialogHeader>
+          <div className="relative z-10 space-y-8">
+            <DialogHeader className="relative pb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-[0.3em] uppercase border border-white/20">
+                <span className="h-2 w-2 rounded-full bg-primary-red" />
+                <span>{activeTimelineStep.stepNumber}</span>
+              </div>
+              <DialogTitle className="text-4xl font-black mt-4 text-white">{activeTimelineStep.modalTitle}</DialogTitle>
+              <button
+                onClick={() => {
+                  setActiveTimelineStep(null);
+                }}
+                className="absolute right-0 top-0 p-2 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Fermer la modale"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </DialogHeader>
 
-          {activeTimelineStep && (
             <div className="space-y-8">
               <p className="text-lg text-white/80 leading-relaxed">{activeTimelineStep.modalDescription}</p>
 
@@ -1464,10 +1464,10 @@ const Index = () => {
                 </div>
               </div>
             </div>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )}
 
   </div>;
 };
