@@ -83,20 +83,57 @@ const MegaMenuSInformer = ({ scrollToSection }: MegaMenuSInformerProps) => {
         type="button"
         onClick={() => setOpen(prev => !prev)}
         aria-expanded={open}
-        className="group inline-flex items-center gap-2 text-[#F5F5F5] font-semibold px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.35)]"
+        className="group relative inline-flex items-center gap-2 text-[#F5F5F5] hover:text-[#E02B2B] font-semibold transition-all duration-300 px-4 py-2"
       >
-        S'informer
-        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180 -translate-y-px" : ""}`} />
+        {/* Conteneur du texte + underline */}
+        <span className="relative inline-flex">
+          S'informer
+
+          {/* Soulignement rouge */}
+          <span className="absolute -bottom-[2px] left-0 h-0.5 w-0 bg-[#E02B2B] transition-all duration-300 group-hover:w-full"></span>
+        </span>
+
+        {/* Flèche */}
+        <ChevronDown
+          className={`h-5 w-5 transition-transform duration-300 group-hover:text-[#E02B2B] ${open ? "rotate-180 -translate-y-px" : ""
+            }`}
+        />
       </button>
 
+
       <div
-        className={`absolute right-0 mt-3 w-[min(96vw,1040px)] max-w-5xl origin-top-right transition-all duration-300 ease-out ${
-          open ? "opacity-100 scale-100 translate-y-0" : "pointer-events-none opacity-0 scale-95 -translate-y-3"
-        }`}
+        className={`absolute right-0 mt-3 w-[min(96vw,1040px)] max-w-5xl origin-top-right transition-all duration-300 ease-out ${open ? "opacity-100 scale-100 translate-y-0" : "pointer-events-none opacity-0 scale-95 -translate-y-3"
+          }`}
       >
         <div className="relative overflow-hidden rounded-2xl border border-neutral-300/40 bg-white/[0.97] shadow-2xl shadow-black/20 backdrop-blur-xl">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.6),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(191,57,57,0.08),transparent_45%)]" />
+
+          {/* Gradient premium */}
+          <div
+            className="absolute inset-0 z-0 bg-gradient-to-b 
+      from-[#CEDEF2]/30 
+      via-[#FAF9FF]/90 
+      to-[#EEF1F7]"
+          />
+
+          {/* Halo radial blanc */}
+          <div
+            className="absolute inset-0 z-0 
+      bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]"
+          />
+
+          {/* Halo rouge */}
+          <div
+            className="absolute inset-0 z-0 
+      bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]"
+          />
+
+          {/* Halo bleu */}
+          <div
+            className="absolute inset-0 z-0 
+      bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]"
+          />
           <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 p-6 lg:p-10">
+
             {/* Carte principale gauche */}
             <div className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-b from-[#213245] to-[#0f1b29] text-white shadow-xl shadow-black/30 backdrop-blur-xl">

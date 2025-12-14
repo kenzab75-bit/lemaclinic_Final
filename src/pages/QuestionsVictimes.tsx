@@ -113,7 +113,7 @@ const QuestionsVictimes = () => {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground leading-tight">
+            <h1 className="text-4xl md:text-6xl font-libre bakerville font-bold text-foreground leading-tight">
               Questions Importantes des Victimes
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -165,7 +165,7 @@ const QuestionsVictimes = () => {
                       <AccordionTrigger className="px-6 py-5 text-left hover:no-underline group">
                         <div className="flex items-start gap-4 pr-4 w-full">
                           <div className="flex items-center gap-3 flex-shrink-0">
-                            <span className="text-2xl font-bold text-[#E02B2B]/50 font-display">
+                            <span className="text-2xl font-bold text-[#E02B2B]/50 font-libre bakerville">
                               {String(index + 1).padStart(2, '0')}
                             </span>
                             <IconComponent className="h-5 w-5 text-[#E02B2B]" />
@@ -266,7 +266,7 @@ const QuestionsVictimes = () => {
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   }, 100);
                 }}
-                className="inline-flex items-center gap-2 bg-[#E02B2B] hover:bg-[#b82424] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#E02B2B]/30 hover:-translate-y-0.5 justify-center pulse-glow"
+                className="inline-flex items-center gap-2 bg-[#E02B2B] hover:bg-[#b82424] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-2 justify-center pulse-glow"
               >
                 <Mail className="h-5 w-5" />
                 Contactez-nous

@@ -325,11 +325,14 @@ const Index = () => {
   const visibleTestimonials = filteredTestimonials.slice(0, displayedTestimonials);
   const hasMoreTestimonials = displayedTestimonials < filteredTestimonials.length;
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+  
     {/* Premium Header */}
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass bg-black/80" : "glass"}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-4">
+
+             {/* Logo carré */}
             <div className="relative">
               <div className="flex items-center gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 border border-white/10 shadow-lg shadow-black/30">
@@ -346,7 +349,7 @@ const Index = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8" aria-label="Navigation principale">
+          <nav className="hidden lg:flex items-center space-x-8 translate-y-[4px]" aria-label="Navigation principale">
             <button
               onClick={() => scrollToSection('accueil')}
               className="relative text-[#E0E0E0] hover:text-[#E02B2B] font-medium transition-all duration-300 group"
@@ -367,7 +370,7 @@ const Index = () => {
             <MegaMenuSInformer scrollToSection={scrollToSection} />
             <button
               onClick={() => scrollToSection('contact')}
-              className="relative text-[#E0E0E0] hover:text-[#E02B2B] font-medium transition-all duration-300 group"
+              className="relative text-[#E0E0E0] font-medium transition-all duration-300 group"
               aria-label="Aller à la section contact"
             >
               Contact
@@ -618,6 +621,11 @@ const Index = () => {
       </div>
     </section>
 
+    {/* Séparateur spécial juste après le header */}
+    <section className="bg-[#FAF9FF] py-0.5">
+      <div className="section-divider-header"></div>
+    </section>
+
     {/* My Story Section - Introduction */}
     <section
       id="histoire"
@@ -652,7 +660,7 @@ const Index = () => {
       {/* CONTENU */}
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#050C17] tracking-tight text-center font-libre baskerville">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#0A0F1C] tracking-tight text-center font-libre baskerville">
             Mon Histoire
           </h2>
           <div className="h-1 w-16 bg-red-600 rounded-full mx-auto mt-4" />
@@ -753,13 +761,39 @@ const Index = () => {
     </section>
 
     {/* Timeline Section */}
-    <section id="victimes" className="relative py-section bg-[#FAF9FF] overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#CEDEF2]/25 via-[#FAF9FF]/90 to-[#FAF9FF]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]" />
+    <section
+      id="Victimes"
+      className="relative py-section bg-[#FAF9FF] overflow-hidden"
+    >
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      {/* Gradient premium */}
+      <div
+        className="absolute inset-0 z-0 bg-gradient-to-b 
+               from-[#CEDEF2]/30 
+               via-[#FAF9FF]/90 
+               to-[#EEF1F7]"
+      />
+
+      {/* Halo radial blanc */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]"
+      />
+
+      {/* Halo rouge */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]"
+      />
+
+      {/* Halo bleu */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]"
+      />
+
+      {/* CONTENU */}
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         <div className="max-w-5xl mx-auto text-center mb-20 space-y-5">
           <p className="text-xs uppercase tracking-[0.35em] text-red-500 font-semibold text-center">Parcours dévoilé</p>
           <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F1C] tracking-tight text-center font-libre baskerville">Un système bien ficelé</h2>
@@ -793,15 +827,15 @@ const Index = () => {
                           <span className="h-2 w-2 rounded-full bg-red-500" />
                           <span>{step.stepNumber}</span>
                         </div>
-                        <h3 className="text-3xl lg:text-4xl font-bold text-white">{step.cardTitle}</h3>
-                        <p className="text-lg text-white/80 leading-relaxed mb-4">{step.cardDescription}</p>
+                        <h3 className="text-3xl lg:text-4xl font-bold text-
+                        white">{step.cardTitle}</h3>
+                        <p className="text-lg text-white/80 leading-relaxed 
+                        mb-4">{step.cardDescription}</p>
                         <Button
                           type="button"
                           className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full px-6 py-3 shadow-lg hover:shadow-red-700/50 hover:scale-[1.02] transition flex items-center"
-                          onClick={() => {
-                            setActiveTimelineStep(step);
-                          }}
-                        >
+                          onClick={() => {setActiveTimelineStep(step);}}
+                         >
                           Cliquer pour voir les détails
                           <ChevronRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -826,17 +860,43 @@ const Index = () => {
     </section>
 
     {/* Elegant Section Divider */}
-    <div className="section-divider"></div>
+    <section className="bg-[#FAF9FF] py-0.5">
+      <div className="section-divider"></div>
+    </section>
 
     {/* Témoignages des Victimes Section */}
-    <section id="temoignages" className="relative py-section bg-[#FAF9FF] overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#CEDEF2]/25 via-[#FAF9FF]/90 to-[#FAF9FF]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,#3D5E731F,transparent_55%)]" />
+    <section
+      id="Témoignages"
+      className="relative py-section bg-[#FAF9FF] overflow-hidden"
+    >
+      {/* Gradient premium */}
+      <div
+        className="absolute inset-0 z-0 bg-gradient-to-b 
+               from-[#CEDEF2]/30 
+               via-[#FAF9FF]/90 
+               to-[#EEF1F7]"
+      />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+      {/* Halo radial blanc */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]"
+      />
+
+      {/* Halo rouge */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]"
+      />
+
+      {/* Halo bleu */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]"
+      />
+
+      {/* CONTENU */}
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-[#0A0F1C] mb-6 font-libre baskerville tracking-tight">
             Témoignages des Victimes
@@ -915,19 +975,42 @@ const Index = () => {
 
     {/* Elegant Section Divider */}
     <section className="bg-[#FAF9FF] py-0.5">
-      <div className="section-divider-small"></div>
+      <div className="section-divider"></div>
     </section>
 
-
     {/* Section Témoignage Anonyme */}
-    <section className="relative py-section bg-[#FAF9FF] overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#CEDEF2]/30 via-[#FAF9FF]/90 to-[#FAF9FF]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#FFFFFF0D,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,#E02B2B12,transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,#3D5E7312,transparent_55%)]" />
+    <section
+      id="Témoignage Anonyme"
+      className="relative py-section bg-[#FAF9FF] overflow-hidden"
+    >
+      {/* Gradient premium */}
+      <div
+        className="absolute inset-0 z-0 bg-gradient-to-b 
+               from-[#CEDEF2]/30 
+               via-[#FAF9FF]/90 
+               to-[#EEF1F7]"
+      />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+      {/* Halo radial blanc */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]"
+      />
+
+      {/* Halo rouge */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]"
+      />
+
+      {/* Halo bleu */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]"
+      />
+
+      {/* CONTENU */}
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <p className="text-xs uppercase tracking-[0.35em] text-red-500 font-semibold mb-4">Confidentiel</p>
           <h2 className="text-4xl md:text-5xl font-bold text-[#050C17] tracking-tight text-center font-libre baskerville">
@@ -1053,15 +1136,42 @@ const Index = () => {
     </section>
 
     {/* Elegant Section Divider */}
-    <div className="section-divider"></div>
+    <section className="bg-[#FAF9FF] py-0.5">
+      <div className="section-divider"></div>
+    </section>
 
     {/* Section RGPD + Contact alignée */}
-    <section id="contact" className="relative py-section bg-[#FAF9FF] overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#CEDEF2]/25 via-[#FAF9FF]/90 to-[#FAF9FF]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]" />
+    <section
+      id="Témoignage Anonyme"
+      className="relative py-section bg-[#FAF9FF] overflow-hidden"
+    >
+      {/* Gradient premium */}
+      <div
+        className="absolute inset-0 z-0 bg-gradient-to-b 
+               from-[#CEDEF2]/30 
+               via-[#FAF9FF]/90 
+               to-[#EEF1F7]"
+      />
 
+      {/* Halo radial blanc */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_center,#FFFFFF0A,transparent_70%)]"
+      />
+
+      {/* Halo rouge */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_left,#E02B2B10,transparent_60%)]"
+      />
+
+      {/* Halo bleu */}
+      <div
+        className="absolute inset-0 z-0 
+               bg-[radial-gradient(circle_at_top_right,#3D5E73/04,transparent_55%)]"
+      />
+
+      {/* CONTENU */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 xl:gap-14 items-stretch h-full">
           {/* Bloc RGPD compact */}
@@ -1150,6 +1260,11 @@ const Index = () => {
           </div>
         </div>
       </div>
+    </section>
+
+    {/* Séparateur spécial juste après le header */}
+    <section className="bg-[#FAF9FF] py-0.5">
+      <div className="section-divider-header"></div>
     </section>
 
     {/* Footer Enrichi */}

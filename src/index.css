@@ -277,6 +277,22 @@ All colors MUST be HSL.
       0 0 0 8px rgba(224, 43, 43, 0.24);
   }
 
+  /* Séparateur spécial juste après le header */
+.section-divider-header {
+  position: relative;
+  height: 1px;
+  margin: 0.5rem 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    rgba(224, 43, 43, 0.25),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  opacity: 0.6;
+}
+
   /* Section separators */
   .section-divider {
   position: relative;
@@ -289,37 +305,47 @@ All colors MUST be HSL.
   padding: 0.25rem 0;    /* Avant : 60px → réduit à 32px */
 }
 
+/* Ligne */
   .section-divider::before {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 25%;
+    right: 25%;
     display: block;
-    height: 0.5px;
+    height: 1px;
+
+     /* Dégradé de ligne beaucoup plus subtil */
     background: linear-gradient(90deg,
       transparent 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      rgba(224, 43, 43, 0.55) 50%,
+      rgba(224, 43, 43, 0.25) 40%,
+      rgba(224, 43, 43, 0.25) 60%,
       rgba(255, 255, 255, 0.05) 80%,
       transparent 100%
     );
   backdrop-filter: blur(0.2px);
 }
 
+/* Point central */
   .section-divider::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle at 30% 30%, #ff9d9d, #e02b2b 60%, #b11111 100%);
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+
+    /* Halo ultra réduit et premium */
+    background: radial-gradient(circle at 10%, #ff9d9d 40%, #e02b2b 70%, #b11111 100%);
     border-radius: 9999px;
+
+    /* Ombres beaucoup plus fines */
     box-shadow:
-      0 0 12px rgba(224, 43, 43, 0.3),
-      0 0 0 4px rgba(224, 43, 43, 0.12),
-      0 6px 12px -10px rgba(2, 8, 19, 0.3);
+      0 0 3px rgba(224, 43, 43, 0.6),
+      0 0 8px rgba(224, 43, 43, 0.4);
   }
 
   /* --- SECONDARY SEPARATOR (pour sections plus compactes) --- */

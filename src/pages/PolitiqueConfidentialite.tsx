@@ -8,11 +8,23 @@ const PolitiqueConfidentialite = () => {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-          <Link to="/" className="flex items-center space-x-3 group w-fit">
-            <Scale className="h-8 w-8 text-primary-red transition-transform duration-300 group-hover:scale-110" />
-            <span className="text-2xl font-bold font-display">
-              LemaClinic Truth
-            </span>
+          <Link to="/" className="flex items-center space-x-4 group w-fit">
+
+            {/* Logo carré comme dans le footer */}
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 border border-white/10 shadow-lg shadow-black/30">
+              <Scale className="h-6 w-6 text-[#E02B2B] transition-transform duration-300 group-hover:scale-110" />
+            </div>
+
+            {/* Nom de la marque identique au footer */}
+            <div className="flex items-center gap-3 translate-y-[4.5px]">
+              <span className="text-2xl font-bold font-libre baskerville tracking-tight text-white/90 drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]">
+                Truth
+              </span>
+
+              {/* Trait rouge premium (optionnel mais cohérent) */}
+              <div className="h-[2px] w-10 bg-gradient-to-r from-[#E02B2B] to-[#ff6868] rounded-full" />
+            </div>
+
           </Link>
         </div>
       </header>
@@ -31,8 +43,8 @@ const PolitiqueConfidentialite = () => {
           {/* Page Title */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-4">
-              <Shield className="h-12 w-12 text-primary-red" />
-              <h1 className="text-4xl md:text-5xl font-bold font-display bg-gradient-to-r from-white via-white to-primary-red bg-clip-text text-transparent">
+              <Shield className="h-12 w-12 text-white" />
+              <h1 className="text-4xl md:text-5xl font-bold font-libre bakerville bg-gradient-to-r from-white via-white to-primary-red bg-clip-text text-transparent">
                 Politique de Confidentialité
               </h1>
             </div>
@@ -53,7 +65,7 @@ const PolitiqueConfidentialite = () => {
             {/* Responsable du traitement */}
             <section>
               <div className="flex items-center gap-3 mb-4">
-                <FileCheck className="h-6 w-6 text-primary-red" />
+                <FileCheck className="h-6 w-6 text-white" />
                 <h2 className="text-2xl font-bold text-foreground">1. Responsable du traitement des données</h2>
               </div>
               <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 space-y-3">
@@ -78,7 +90,7 @@ const PolitiqueConfidentialite = () => {
                 <p className="text-muted-foreground">
                   Nous collectons uniquement les données nécessaires au fonctionnement de notre mission. Les informations collectées peuvent inclure :
                 </p>
-                
+
                 <div className="space-y-4 ml-4">
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Données d'identification :</h3>
