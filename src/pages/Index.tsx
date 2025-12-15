@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Scale, Shield, FileText, AlertTriangle, X, ChevronRight, Quote, ArrowUp, Lock, ShieldCheck, ChevronDown, Menu, Mail, Loader2, Heart, FileCheck, Sparkles, Globe, Users, Megaphone, Fingerprint, KeyRound, Pause, Play } from "lucide-react";
+import { Scale, Shield, FileText, AlertTriangle, ChevronRight, Quote, ArrowUp, Lock, ShieldCheck, ChevronDown, Menu, Mail, Loader2, Heart, FileCheck, Sparkles, Globe, Users, Megaphone, Fingerprint, KeyRound, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useToast } from "@/hooks/use-toast";
@@ -11,11 +10,12 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { testimonials } from "@/data/testimonials";
 import { timelineSteps, type TimelineStep } from "@/data/timelineSteps";
 import MegaMenuSInformer from "@/components/MegaMenuSInformer";
+import TimelineModal from "@/components/TimelineModal";
 const Index = () => {
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const [scrolled, setScrolled] = useState(false);
-  const [activeTimelineStep, setActiveTimelineStep] = useState<TimelineStep | null>(null);
+  const [openStep, setOpenStep] = useState<TimelineStep | null>(null);
   const [activeFilter, setActiveFilter] = useState("Tous");
   const [testimony, setTestimony] = useState("");
   const [consentChecked, setConsentChecked] = useState(false);
@@ -30,7 +30,6 @@ const Index = () => {
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [hasHeroVideoError, setHasHeroVideoError] = useState(false);
   const [isHeroPaused, setIsHeroPaused] = useState(false);
-  const [isTimelineDialogOpen, setIsTimelineDialogOpen] = useState(false);
   const {
     toast
   } = useToast();
@@ -762,7 +761,7 @@ const Index = () => {
 
     {/* Timeline Section */}
     <section
-      id="Victimes"
+      id="victimes"
       className="relative py-section bg-[#FAF9FF] overflow-hidden"
     >
 
@@ -835,8 +834,7 @@ const Index = () => {
                           type="button"
                           className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full px-6 py-3 shadow-lg hover:shadow-red-700/50 hover:scale-[1.02] transition flex items-center"
                           onClick={() => {
-                            setActiveTimelineStep(step);
-                            setIsTimelineDialogOpen(true);
+                            setOpenStep(step);
                           }}
                          >
                           Cliquer pour voir les détails
@@ -869,7 +867,7 @@ const Index = () => {
 
     {/* Témoignages des Victimes Section */}
     <section
-      id="Témoignages"
+      id="temoignages"
       className="relative py-section bg-[#FAF9FF] overflow-hidden"
     >
       {/* Gradient premium */}
@@ -983,7 +981,7 @@ const Index = () => {
 
     {/* Section Témoignage Anonyme */}
     <section
-      id="Témoignage Anonyme"
+      id="contact"
       className="relative py-section bg-[#FAF9FF] overflow-hidden"
     >
       {/* Gradient premium */}
@@ -1407,72 +1405,15 @@ const Index = () => {
         </div>
       </div>
     </footer>
-    <Dialog
-      open={isTimelineDialogOpen}
+    <TimelineModal
+      step={openStep}
       onOpenChange={(open) => {
         setIsTimelineDialogOpen(open);
         if (!open) {
-          setActiveTimelineStep(null);
+          setOpenStep(null);
         }
       }}
-    >
-      {activeTimelineStep && (
-        <DialogContent className="relative max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-[#213245] to-[#0f1b29] border border-white/10 text-white shadow-2xl shadow-black/40 backdrop-blur-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-white/10">
-          <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,rgba(62,104,136,0.28),transparent_45%)]" />
-          <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,rgba(224,43,43,0.18),transparent_55%)]" />
-
-          <div className="relative z-10 space-y-8">
-            <DialogHeader className="relative pb-6">
-              <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-[0.3em] uppercase border border-white/20">
-                <span className="h-2 w-2 rounded-full bg-primary-red" />
-                <span>{activeTimelineStep.stepNumber}</span>
-              </div>
-              <DialogTitle className="text-4xl font-black mt-4 text-white">{activeTimelineStep.modalTitle}</DialogTitle>
-              <button
-                onClick={() => {
-                  setIsTimelineDialogOpen(false);
-                  setActiveTimelineStep(null);
-                }}
-                className="absolute right-0 top-0 p-2 rounded-full hover:bg-white/10 transition-colors"
-                aria-label="Fermer la modale"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </DialogHeader>
-
-            <div className="space-y-8">
-              <p className="text-lg text-white/80 leading-relaxed">{activeTimelineStep.modalDescription}</p>
-
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-inner shadow-black/30 backdrop-blur">
-                <h4 className="text-2xl font-bold text-white mb-4">Détails de l’étape</h4>
-                <ul className="space-y-3">
-                  {activeTimelineStep.details.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-white/80">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-primary-red" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-inner shadow-black/30 backdrop-blur">
-                <h4 className="text-2xl font-bold text-white mb-4">Sources et preuves</h4>
-                <div className="space-y-4">
-                  {activeTimelineStep.sources.map((source) => (
-                    <div key={source.label} className="p-4 rounded-xl border border-white/20 bg-white/5 text-white">
-                      <p className="font-semibold text-white">{source.label}</p>
-                      {source.description && (
-                        <p className="text-sm text-white/70 mt-1">{source.description}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </DialogContent>
-      )}
-    </Dialog>
+    />
 
   </div>;
 };
