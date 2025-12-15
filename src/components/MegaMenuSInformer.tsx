@@ -74,6 +74,17 @@ const MegaMenuSInformer = ({ scrollToSection }: MegaMenuSInformerProps) => {
     if (action.type === "scroll") {
       scrollToSection(action.id);
     }
+
+    if (action.type === "link") {
+      setOpen(false);
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const handleGuideClick = () => {
+    scrollToSection("victimes");
     setOpen(false);
   };
 
@@ -154,6 +165,7 @@ const MegaMenuSInformer = ({ scrollToSection }: MegaMenuSInformerProps) => {
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
+                      onClick={handleGuideClick}
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm shadow-lg shadow-red-900/30 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-red-800/45"
                     >
                       Télécharger le guide
